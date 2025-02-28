@@ -1,0 +1,130 @@
+1) Four elements of embedded Linux
+
+	Toolchain: The compiler and other tools needed to create code for your target device. Everything else depends on the toolchain.
+
+	Bootloader: The program that initializes the board and loads the Linux kernel.
+
+	Kernel: This is the heart of the system, managing system resources and interfacing with hardware.
+
+	Root filesystem: Contains the libraries and programs that are run once the kernel has completed its initialization.
+
+
+2) What is Yocto?
+
+	Yocto is the smallest SI metric system prefix about 10^-24
+
+
+3) What is Yocto Project		
+----------------------	
+
+Yocto is a project working group of the Linux Foundation	
+		
+Yocto project provides open source, high quality infrastructure and tools to help developers create their own custom Linux distributions for any hardware architecture.		
+		
+History				
+		
+	Founded in 2010,  in an effort to reduce work duplication, provide resources and information catering.
+		
+	collaboration of		
+		many hardware manufacturers like ARM, QNX, NXP, etc. and 
+		open source operating systems vendors like ubuntu, redhat, electrobit					
+		
+To understand the outcome provided by the Yocto Project, we can use the analogy of the computing machine		
+		
+Input: Set of data that describes what we want, that is our specification 		
+		(Kernel Configuration, Hardware Name, Packages/Binaries to be installed)
+		
+Output: Linux Based Embedded Product 		
+		(Linux Kernel, Root File System, Bootloader, Device Tree, Toolchain)
+
+4) Poky	
+	
+	
+Poky is a reference distribution of Yocto Project. it is an example or basic product	
+	
+Yocto Project uses Poky to build images (kernel, system, and application software) for targeted hardware.	
+	
+What poky has,	
+	• Bitbake
+	• OpenEmbedded Core
+	• meta-yocto-bsp
+	• Documentation
+	
+Poky does not contain binary files, it is provides environment to build your own custom Linux distribution from target.
+
+5) What is difference between poky and Yocto
+
+Yocto refers to the organization ( like one would refer to 'canonical', the company behind Ubuntu )
+Poky refers to the actual product ( analogous to 'Ubuntu' )
+
+general example is Maggi
+Yocto = Nestle
+poky = Maggie
+Developer = Chef/maker
+
+6) OpenEmbedded
+
+offers bitbake, 
+Oe-core layer - contains essential recipes, classes, and configurations required for building a minimal Linux system.
+and metadata
+
+
+7) Metadata 	
+	
+	
+analogy : A set of data that describes and gives information about other data	
+	
+Yocto World: 	
+	Metadata refers to the build instructions
+	Commands and data used to indicate what versions of software are used
+	Where they are obtained from
+	software patches
+	
+Metadata is collection of	
+	• Configuration files (.conf)
+	• Recipes (.bb and .bbappend)
+	• Classes (.bbclass)
+	• Includes (.inc)
+
+8) Bitbake
+
+It is a tool - made up of python and shell script
+It parse metadata (recipes, config files, class files) and create packages for target image
+
+8.1) Layers
+
+A collection of related recipes. or Layers are recipe folders
+
+example  BSP layer, a GUI layer, a distro configuration, middleware, or an application
+
+ 
+9) Conf file (.conf)
+all configuration such as Machine Configuration, Distribution Configuration, Compiler related setting, user configuration
+
+10) recipe file (.bb)
+A recipe describes:
+    where you get source code
+    which patches to apply
+    Configuration options
+    Compile options (library dependencies)
+    Install
+    License
+
+11) class file (.bbclass)
+
+it abstract common functionality and share it amongst multiple recipe (.bb) files
+
+ex kernel.bbclass - Handles building kernels. Contains code to build all kernel trees
+
+12) Image
+An image is the top level recipe, it has a description, a license and inherits the core-image class
+image is binary architecture and defines how the root filesystem is built, with what packages.
+
+
+
+
+
+
+		
+		
+
